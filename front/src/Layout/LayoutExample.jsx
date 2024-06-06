@@ -7,28 +7,31 @@ export const LayoutExample = () => {
 
   const logoutPerfil = () => {
     deleteLogin()
-    .then(() => {
-      navigate(`/${publicRoutes.auth}`)
-      localStorage.removeItem("token")
-    })
-    .catch(console.log)
+      .then(() => {
+        navigate(`/${publicRoutes.auth}`);
+        localStorage.removeItem("token");
+      })
+      .catch(console.log);
   };
 
   return (
     <>
-      <div className="flex gap-4 p-4">
-        <div onClick={logoutPerfil}>
-          <p>Logout</p>
+      <div className="h-full w-full ">
+        <div className="h-[100px] bg-black bg-opacity-70 shadow-xl flex items-center px-16 gap-4">
+          <div
+            onClick={logoutPerfil}
+            className="bg-red-900 px-4 py-1 rounded-full text-white"
+          >
+            <p>Salir</p>
+          </div>
+          <div className="bg-blue-700 px-4 py-1 rounded-full text-white">
+            <p>Participar</p>
+          </div>
         </div>
-        <h1
-          onClick={() => {
-            // navigate(`/${publicRoutes.auth}`);
-          }}
-        >
-          Mi perfil
-        </h1>
+        <div className="h-[calc(100%-100px)] w-ful overflow-hidden">
+          <Outlet />
+        </div>
       </div>
-      <Outlet />
     </>
   );
 };
