@@ -1,0 +1,33 @@
+{
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.tabSize": 4,
+	"editor.insertSpaces": false,
+	"editor.detectIndentation": true,
+	"editor.formatOnSave": true,
+	"prettier.useTabs": true,
+	"prettier.tabWidth": 4,
+	"prettier.printWidth": 150,
+	"[html]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"workbench.colorCustomizations": {
+		// "activityBar.activeBackground": "#b300b3"
+		// "activityBar.activeBorder": "#9f9f00"
+		"activityBar.background": "#520000"
+		// "activityBar.foreground": "#e7e7e7",
+		// "activityBar.inactiveForeground": "#e7e7e799",
+		// "activityBarBadge.background": "#9f9f00",
+		// "activityBarBadge.foreground": "#15202b",
+		// "sash.hoverBorder": "#b300b3",
+		// "statusBar.background": "#FFC427"
+		// "statusBar.foreground": "#e7e7e7",
+		// "statusBarItem.hoverBackground": "#b300b3",
+		// "statusBarItem.remoteBackground": "#800080",
+		// "statusBarItem.remoteForeground": "#e7e7e7",
+		// "titleBar.activeBackground": "#",
+		// "titleBar.activeForeground": "#e7e7e7",
+		// "titleBar.inactiveBackground": "#80008099",
+		// "titleBar.inactiveForeground": "#e7e7e799"
+	},
+	"peacock.color": "purple"
+}

@@ -1,0 +1,42 @@
+{
+	"jest.autoRun": {
+		"onStartup": []
+	},
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.tabSize": 4,
+	"editor.insertSpaces": true,
+	"editor.detectIndentation": false,
+	"editor.formatOnSave": true,
+	"prettier.useTabs": true,
+	"prettier.tabWidth": 4,
+	"prettier.printWidth": 150,
+	"[html]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"workbench.colorCustomizations": {
+		"activityBar.activeBackground": "#9c6926",
+		"activityBar.activeBorder": "#9f9f00",
+		"activityBar.background": "#1B1464",
+		"activityBar.foreground": "#0000",
+		"activityBar.inactiveForeground": "#e7e7e799",
+		"activityBarBadge.background": "#9f9f00",
+		"activityBarBadge.foreground": "#15202b",
+		"sash.hoverBorder": "#50E5E6",
+		"statusBar.background": "#1B1464",
+		"statusBar.foreground": "#0000",
+		"statusBarItem.hoverBackground": "#50E5E6",
+		"statusBarItem.remoteBackground": "#1B1464",
+		"statusBarItem.remoteForeground": "#ffff",
+		"titleBar.activeBackground": "#1B1464",
+		"titleBar.activeForeground": "#ffff",
+		"titleBar.inactiveBackground": "#1B1464",
+		"titleBar.inactiveForeground": "#0000"
+	},
+	"peacock.color": "purple",
+	"[javascript]": {
+		"editor.defaultFormatter": "vscode.typescript-language-features"
+	},
+	"[groovy]": {
+		"editor.defaultFormatter": "NicolasVuillamy.vscode-groovy-lint"
+	}
+}
