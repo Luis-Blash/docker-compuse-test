@@ -22,7 +22,9 @@ const getErrorMessage = (res, { msg, status = 1 }) => {
 };
 
 
-const errorHandler = async ({ res, path, message }) => {
+const errorHandler = async ({ res,req, path, message }) => {
+    const redisClient = req.app.locals.redisClient;
+    redisClient.set(`error/${new Date().getTime()}:${path}`, JSON.stringify({ message }));
     // await sendError({ subject: "(NOMBRE PROYECTO COMO CLICKUP) | ERROR", messageError: message, project: "(NOMBRE PROYECTO COMO CLICKUP)", routeError: path })
     return getErrorMessage(res, { msg: "Ha ocurrido un error interno", status: 1 })
 }

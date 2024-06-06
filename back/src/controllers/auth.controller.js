@@ -1,4 +1,4 @@
-const { getBadRequestResponse, getSuccessfulResponse } = require("../helpers/responses");
+const { getBadRequestResponse, getSuccessfulResponse, errorHandler } = require("../helpers/responses");
 const { getValidUserByEmail } = require("./user.controller");
 const { validatePassword } = require("../helpers/encrypt");
 const { generateJWT } = require("../helpers/token");
@@ -19,7 +19,7 @@ const login = async (req, res) => {
         
         return getSuccessfulResponse(res, { status: 0, msg: "create token", payload: { token } });
     } catch (error) {
-        return errorHandler({ res, message: error.message, path: req.originalUrl })
+        return errorHandler({ res, req, message: error.message, path: req.originalUrl })
     }
 }
 
@@ -33,7 +33,7 @@ const getNewToken = async (req, res) => {
 
         return getSuccessfulResponse(res, { status: 0, msg: "get token", payload: { token } });
     } catch (error) {
-        return errorHandler({ res, message: error.message, path: req.originalUrl })
+        return errorHandler({ res, req, message: error.message, path: req.originalUrl, req })
     }
 }
 
@@ -41,7 +41,7 @@ const deleteToken = async (req, res) => {
     try {
         return getSuccessfulResponse(res, { status: 0, msg: "delete token", payload: { } });
     } catch (error) {
-        return errorHandler({ res, message: error.message, path: req.originalUrl })
+        return errorHandler({ res, req, message: error.message, path: req.originalUrl, req })
     }
 }
 

@@ -78,7 +78,7 @@ const uploadFile = async (req, res = response) => {
         return getSuccessfulResponse(res, "File was uploaded successfully", url);
 
     } catch (error) {
-        return errorHandler({ res, message: error.message, path: req.originalUrl })
+        return errorHandler({ res, req, message: error.message, path: req.originalUrl })
     }
 }
 
@@ -92,7 +92,7 @@ const deleteFile = async (req, res = response) => {
         return getSuccessfulResponse(res, "File was delete successfully", url);
 
     } catch (error) {
-        return errorHandler({ res, message: error.message, path: req.originalUrl })
+        return errorHandler({ res, req, message: error.message, path: req.originalUrl })
     }
 }
 
@@ -106,7 +106,7 @@ const deleteArrayFile = async (req, res = response) => {
         return getSuccessfulResponse(res, "File was delete successfully", arrayFile);
 
     } catch (error) {
-        return errorHandler({ res, message: error.message, path: req.originalUrl })
+        return errorHandler({ res,req, message: error.message, path: req.originalUrl })
     }
 }
 

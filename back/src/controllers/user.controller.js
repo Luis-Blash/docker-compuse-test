@@ -17,7 +17,7 @@ const createResponse = async (req, res) => {
 
         return getSuccessfulResponse(res, { token, status: 0, msg: "User was created", payload: { token }, });
     } catch (error) {
-        return errorHandler({ res, message: error.message, path: req.originalUrl })
+        return errorHandler({ res,req, message: error.message, path: req.originalUrl })
     }
 }
 
@@ -42,7 +42,7 @@ const getResponse = async (req, res) => {
 
         return getSuccessfulResponse(res, {  status: 0, msg: "User get", payload: { users }, });
     } catch (error) {
-        return errorHandler({ res, message: error.message, path: req.originalUrl })
+        return errorHandler({ res,req, message: error.message, path: req.originalUrl })
     }
 }
 
