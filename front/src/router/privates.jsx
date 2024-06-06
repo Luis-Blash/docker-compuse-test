@@ -9,7 +9,7 @@ const getRequestPrivateRoute = async () => {
 	if(!token){
 		return redirect("auth");
 	}
-	const { status } = await getLogin(token);
+	const { status } = await getLogin();
 	if (status > 0) {
 		return redirect("auth");
 	}

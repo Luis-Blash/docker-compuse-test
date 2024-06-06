@@ -3,7 +3,6 @@ const secret = process.env.JWT_SECRET;
 
 // Identifcador de id
 const generateJWT = (uid = "") => {
-    console.log(uid);
     const payload = { uid };
     return jwt.sign(payload, secret);
 };

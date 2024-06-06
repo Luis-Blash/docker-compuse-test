@@ -6,6 +6,7 @@ const { logInColor } = require("../helpers/logs");
 const { connectDataBase } = require("./database");
 const { connectRedis } = require("./redis");
 const fileUpload = require("express-fileupload");
+const { cacheMiddleware } = require("../middleware/redis.middleware");
 
 const hostname = os.hostname();
 
@@ -41,6 +42,8 @@ class Server {
         this.app.use(express.json());
         // ruta de archivos
         this.app.use(express.static("public"));
+
+        this.app.use(cacheMiddleware)
     }
 
     listen() {

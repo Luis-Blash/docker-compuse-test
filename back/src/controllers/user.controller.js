@@ -36,6 +36,10 @@ const getUserById = async (userId) => {
 const getResponse = async (req, res) => {
     try {
         const users = await getUsers();
+
+        const redisClient = req.app.locals.redisClient;
+        redisClient.set(req.originalUrl, JSON.stringify({ users }));
+
         return getSuccessfulResponse(res, {  status: 0, msg: "User get", payload: { users }, });
     } catch (error) {
         return errorHandler({ res, message: error.message, path: req.originalUrl })

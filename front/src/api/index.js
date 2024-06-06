@@ -1,5 +1,5 @@
 import { Endpoints } from "./endpoints";
-import { getMethod, postMethod } from "./servicesRequest";
+import { deleteMethod, getMethod, postMethod } from "./servicesRequest";
 
 const responseAxios = (status = 0, msg = "", payload = null) => {
   return {
@@ -11,8 +11,8 @@ const responseAxios = (status = 0, msg = "", payload = null) => {
 
 export const getUsers = async () => {
   try {
-    const { payload } = await getMethod(Endpoints.users.root);
-    return responseAxios(0, "example", payload.users);
+    const { msg, payload } = await getMethod(Endpoints.users.root);
+    return responseAxios(0, msg, payload.users);
   } catch (error) {
     console.log("error", error.response);
     return responseAxios(1, "Error al obtener");
@@ -42,10 +42,20 @@ export const loginRequest = async (form) => {
 };
 
 
-export const getLogin = async (token) => {
+export const getLogin = async () => {
   try {
-    const { payload } = await postMethod(`${Endpoints.auth.validate}${token}`);
+    const { payload } = await postMethod(`${Endpoints.auth.validate}`);
     return responseAxios(0, "example", payload);
+  } catch (error) {
+    console.log("error", error.response);
+    return responseAxios(1, "Error al obtener");
+  }
+};
+
+export const deleteLogin = async () => {
+  try {
+    const data = await deleteMethod(Endpoints.auth.logout);
+    return responseAxios(0, "example", {data});
   } catch (error) {
     console.log("error", error.response);
     return responseAxios(1, "Error al obtener");

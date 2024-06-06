@@ -4,6 +4,7 @@ export const Endpoints = {
 	},
 	auth:{
 		login: "/auth/login",
-		validate: "auth/validate/"
+		validate: "/auth/validate/",
+		logout: "/auth/logout/"
 	}
 };

@@ -14,7 +14,10 @@ const login = async (req, res) => {
         if (!isPasswordValid) return getBadRequestResponse(res, { message: `Email/Password are incorrect`, payload: { email }, status: 1 });
         const token = generateJWT(user._id);
 
-        return getSuccessfulResponse(res, { status: 0, msg: "Ok", payload: { token } });
+        const redisClient = req.app.locals.redisClient;
+        redisClient.set(`${token}`, JSON.stringify({ token }));
+        
+        return getSuccessfulResponse(res, { status: 0, msg: "create token", payload: { token } });
     } catch (error) {
         return errorHandler({ res, message: error.message, path: req.originalUrl })
     }
@@ -24,7 +27,19 @@ const getNewToken = async (req, res) => {
     const { userInstance } = req.body;
     try {
         const token = generateJWT(userInstance._id);
-        return getSuccessfulResponse(res, { status: 0, msg: "Ok", payload: { token } });
+
+        const redisClient = req.app.locals.redisClient;
+        redisClient.set(`${token}`, JSON.stringify({ token }));
+
+        return getSuccessfulResponse(res, { status: 0, msg: "get token", payload: { token } });
+    } catch (error) {
+        return errorHandler({ res, message: error.message, path: req.originalUrl })
+    }
+}
+
+const deleteToken = async (req, res) => {
+    try {
+        return getSuccessfulResponse(res, { status: 0, msg: "delete token", payload: { } });
     } catch (error) {
         return errorHandler({ res, message: error.message, path: req.originalUrl })
     }
@@ -35,5 +50,6 @@ const getNewToken = async (req, res) => {
 
 module.exports = {
     login,
-    getNewToken
+    getNewToken,
+    deleteToken
 }

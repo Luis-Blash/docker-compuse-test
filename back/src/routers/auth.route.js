@@ -1,17 +1,19 @@
 const { Router } = require("express");
 const { body, header } = require("express-validator");
 const { validateMiddlewareChecks } = require("../middleware/validation.middleware");
-const { login, getNewToken } = require("../controllers/auth.controller");
+const { login, getNewToken, deleteToken } = require("../controllers/auth.controller");
 const { validateToken } = require("../middleware/auth.middleware");
+const { getTokenAuthRedis, deleteTokenAuthRedis } = require("../middleware/redis.middleware");
 
 
 
 const router = Router();
 
-router.post('/validate/:token',
+router.post('/validate',
     [
         header("token").notEmpty().withMessage("It is required").isString().custom(validateToken),
-        validateMiddlewareChecks
+        validateMiddlewareChecks,
+        getTokenAuthRedis
     ],
     getNewToken
 )
@@ -24,6 +26,15 @@ router.post('/login',
         validateMiddlewareChecks
     ],
     login
+);
+
+router.delete('/logout',
+    [
+        header("token").notEmpty().withMessage("It is required").isString().custom(validateToken),
+        validateMiddlewareChecks,
+        deleteTokenAuthRedis
+    ],
+    deleteToken
 );
 
 module.exports = router;

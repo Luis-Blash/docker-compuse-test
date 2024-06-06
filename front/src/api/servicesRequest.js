@@ -11,7 +11,13 @@ const postMethod = async (url, form) => {
     return data
 }
 
+const deleteMethod = async (url, form) => {
+    const { data } = await apiBack.delete(url,form);
+    return data
+}
+
 export{
     getMethod,
-    postMethod
+    postMethod,
+    deleteMethod
 }

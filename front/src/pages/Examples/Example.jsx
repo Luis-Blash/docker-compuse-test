@@ -13,7 +13,7 @@ export const Example = () => {
 
   useEffect(() => {
     getUsers()
-      .then(({ payload }) => {
+      .then(({ msg,payload }) => {
         setUsers(payload);
       })
       .catch((error) => {
