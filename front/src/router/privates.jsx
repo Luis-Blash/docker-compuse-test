@@ -1,14 +1,18 @@
+import { redirect } from "react-router-dom";
 import { LayoutExample } from "../Layout/LayoutExample";
 import { Example } from "../pages/Examples/Example";
-import { Example3D } from "../pages/Examples/Example3D";
 import { privateRoutes } from "./routesEndpoints";
+import { getLogin } from "../api";
 
 const getRequestPrivateRoute = async () => {
-	// console.log(localStorage.getItem("token"), data);
-	// const { status, payload } = await getDataExample();
-	// if (status > 0) {
-	// 	return redirect("auth");
-	// }
+	const token = localStorage.getItem("token")
+	if(!token){
+		return redirect("auth");
+	}
+	const { status } = await getLogin(token);
+	if (status > 0) {
+		return redirect("auth");
+	}
 	return "data";
 };
 

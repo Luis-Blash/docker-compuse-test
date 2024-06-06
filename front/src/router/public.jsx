@@ -1,17 +1,19 @@
-import { LayoutExample } from "../Layout/LayoutExample";
+import { LayoutAuth } from "../Layout/LayoutAuth";
+import { Login } from "../pages/auth/Login";
+import { Register } from "../pages/auth/Register";
 import { publicRoutes } from "./routesEndpoints";
 
 export const routerPublic = {
-	element: <LayoutExample></LayoutExample>,
+	element: <LayoutAuth></LayoutAuth>,
 	path: publicRoutes.auth,
 	children: [
 		{
 			index: true,
-			element: <>auth</>,
+			element: <Login></Login>,
 		},
 		{
 			path: publicRoutes.register,
-			element: <>registro</>,
+			element: <Register></Register>,
 		},
 	],
 };

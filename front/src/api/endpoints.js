@@ -1,3 +1,9 @@
 export const Endpoints = {
-	episodieExample: "episode",
+	users:{
+		root: "/user"
+	},
+	auth:{
+		login: "/auth/login",
+		validate: "auth/validate/"
+	}
 };
