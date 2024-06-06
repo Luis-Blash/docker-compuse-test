@@ -9,10 +9,11 @@ const getRequestPrivateRoute = async () => {
 	if(!token){
 		return redirect("auth");
 	}
-	const { status } = await getLogin();
+	const { status, payload } = await getLogin();
 	if (status > 0) {
 		return redirect("auth");
 	}
+	localStorage.setItem("token", payload.token)
 	return "data";
 };
 

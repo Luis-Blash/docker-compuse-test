@@ -5,15 +5,17 @@ const { getSuccessfulResponse } = require("../helpers/responses");
 const getMethods = ["GET"];
 
 const cacheMiddleware = async (req, res, next) => {
+  const urlReques = req.originalUrl
   const redisClient = req.app.locals.redisClient;
-
+  logInColor(`${urlReques} - ${req.method}`,"orange")
+  
   if (!isGetMethod(req.method)) {
-    deleteCache(redisClient, req.originalUrl);
+    deleteCache(redisClient, urlReques);
     return next();
   }
-
+  
   try {
-    const cachedData = await getCache(redisClient, req.originalUrl);
+    const cachedData = await getCache(redisClient, urlReques);
     if (cachedData) {
       return sendCachedResponse(res, cachedData);
     }
