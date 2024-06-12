@@ -40,6 +40,8 @@ const getResponse = async (req, res) => {
         const redisClient = req.app.locals.redisClient;
         redisClient.set(req.originalUrl, JSON.stringify({ users }));
 
+        console.log('base datos');
+
         return getSuccessfulResponse(res, {  status: 0, msg: "User get", payload: { users }, });
     } catch (error) {
         return errorHandler({ res,req, message: error.message, path: req.originalUrl })
